@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -34,6 +35,8 @@ public class Topbar extends RelativeLayout {
 	private float titleSize;
 	private int textColor;
 	private String titleText;
+	
+	private TopbarClickListener clickListener;
 	
 	//把控件放入布局中
 	private LayoutParams leftParams,rightParams,titleParams;
@@ -99,6 +102,42 @@ public class Topbar extends RelativeLayout {
 		titleParams=new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,LayoutParams.MATCH_PARENT);
 		titleParams.addRule(RelativeLayout.CENTER_IN_PARENT,TRUE);
 		addView(textView, titleParams);
+		
+		leftbtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				clickListener.leftClick();
+			}
+		});
+		rightbtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				clickListener.rightClick();
+			}
+		});
 	}
-
+	/**
+	 * 监听回调接口
+	 * @author Administrator
+	 *
+	 */
+	public interface TopbarClickListener{
+		public void leftClick();
+		public void rightClick();
+	}
+	public void setOnTopbarClickListener(TopbarClickListener listener){
+		this.clickListener=listener;
+	}
+	
+	public void setLeftVisible(boolean flag){
+		if(flag){
+			leftbtn.setVisibility(View.VISIBLE);
+		}else{
+			leftbtn.setVisibility(View.GONE);
+		}
+	}
 }

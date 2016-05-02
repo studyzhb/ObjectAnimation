@@ -8,12 +8,13 @@
 <!-- 引用自定义文件 -->
     
 	<com.cooshow.objectanamition.Topbar 
+	    android:id="@+id/topbar"
 	    android:layout_width="match_parent"
 	    android:layout_height="50dp"
 	    zhangcustom:leftBackground="@drawable/a"
 	    zhangcustom:title="自定义标提"
 	    zhangcustom:titleTextSize="24sp"
-	    zhangcustom:titleTextColor="#FFFFFF"
+	    zhangcustom:titleTextColor="#123412"
 	    zhangcustom:leftTextColor="#FFFFFF"
 	    zhangcustom:leftText="左按钮"
 	    zhangcustom:rightTextColor="#FFFFFF"
